@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Send a sign-in code and verify access",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": ["sign-in form", "email verification", "successful verification", "dashboard access"],
+    "description": "Verifies the primary sign-in flow moves from credentials to email verification and then into the banking dashboard.",
+    "steps": ["Enter a non-empty email or mobile number and password", "Submit the sign-in form", "Use the verification code received by email", "Submit the verification code"],
+    "expected": "The verification screen appears after sign-in, and a valid email code opens the banking dashboard."
+  },
+  {
+    "name": "Reject an invalid verification code",
+    "viewport": "desktop",
+    "covers": ["verification validation", "invalid-code guardrail"],
+    "description": "Verifies that a malformed or invalid verification code does not grant dashboard access.",
+    "steps": ["Submit the sign-in form with non-empty credentials", "Enter a six-digit code that is not the delivered code", "Submit the verification form"],
+    "expected": "A visible invalid-or-expired code message appears and the dashboard remains locked."
+  },
+  {
+    "name": "Create account flow",
+    "viewport": "mobile",
+    "covers": ["account setup", "required-field validation", "responsive authentication UI"],
+    "description": "Verifies the account creation screen validates required fields and remains usable on a mobile viewport.",
+    "steps": ["Open Create account", "Leave at least one required field empty", "Submit the form"],
+    "expected": "A visible required-field message appears and no account setup confirmation is created."
+  },
+  {
+    "name": "Dashboard account visibility controls",
+    "viewport": "desktop",
+    "covers": ["dashboard balances", "show-hide balance control", "account list", "recent activity"],
+    "description": "Verifies the authenticated dashboard presents accounts and activity and lets the user hide balances.",
+    "setup": ["Complete a successful sign-in flow"],
+    "steps": ["Open the dashboard", "Toggle the balance visibility control", "Review the account and recent activity sections"],
+    "expected": "Balances are masked after toggling, while account names and recent activity remain visible."
+  }
+]
