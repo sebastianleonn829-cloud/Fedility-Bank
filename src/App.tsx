@@ -1,4 +1,3 @@
-```tsx
 import { useState } from 'react';
 import {
   ArrowDownLeft,
@@ -32,9 +31,9 @@ async function postJson(path: string, body: Record<string, unknown>) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    const error = new Error(
+    const error = (new Error(
       data?.message || `Request failed with status ${response.status}`
-    ) as Error & { data?: unknown };
+    )) as Error & { data?: unknown };
 
     error.data = data;
     throw error;
@@ -1306,4 +1305,3 @@ function App() {
 }
 
 export default App;
-```
