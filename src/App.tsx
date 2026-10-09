@@ -436,6 +436,17 @@ function App() {
                   </button>
                 </form>
 
+               <button
+  type="button"
+  className="quiet-action"
+  onClick={() => {
+    setNotice('');
+    setActive('Overview');
+    setSignedIn(true);
+  }}
+>
+  View Demo Dashboard
+</button>
                 <div className="auth-bottom">
                   <button
                     onClick={() =>
