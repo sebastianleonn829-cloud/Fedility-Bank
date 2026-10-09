@@ -404,7 +404,21 @@ function App() {
                   </p>
                 </div>
 
-                <form onSubmit={signIn} className="modern-form">
+               <form
+  onSubmit={(event) => {
+    event.preventDefault();
+
+    if (!identifier || !password) {
+      setNotice('Enter your demo email and password to continue.');
+      return;
+    }
+
+    setNotice('');
+    setActive('Overview');
+    setSignedIn(true);
+  }}
+  className="modern-form"
+>
                   <label>
                     Email or mobile number
                     <input
